@@ -21,13 +21,15 @@ class StoryboardViewController: UIViewController, ImageGalleryDelegate {
 		return 4
 	}
 
+	func imageGalleryView(galleryView: ImageGalleryView, imageCallBack callBack: ImageCallback, forImageAtIndex index: Int) {
+		let image = UIImage(named: "test\(index)")!
+		callBack(image: image)
+	}
+
 	func imageGalleryView(galleryView: ImageGalleryView) -> ImageCallback {
-		return image
+		return { index in
+			return UIImage(named: "test\(index)")!
+		}
 	}
-
-	func image(index: Int) -> UIImage {
-		return UIImage(named: "test\(index)")!
-	}
-
 }
 

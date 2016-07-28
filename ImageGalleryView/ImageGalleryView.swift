@@ -8,12 +8,22 @@
 
 import UIKit
 
+/**
+Private global variable to store the content mode of the `ImageGalleryView`. This is used so that it can be passed onto the image views in the collection view cells.
+*/
 private var imageContentMode: UIViewContentMode = .ScaleAspectFill
-typealias ImageCallback = (index: Int) -> UIImage
 
+/**
+A simple typealias for the image callblack closure used to obtain the images. A callback is used to support asynchronous loading of images.
+*/
+typealias ImageCallback = (image: UIImage) -> ()
+
+/**
+The delegate protocol used for getting information about the content of the `ImageGalleryView`.
+*/
 @objc protocol ImageGalleryDelegate: class {
 	func numberOfImages(inImageGalleryView galleryView: ImageGalleryView) -> Int
-	func imageGalleryView(galleryView: ImageGalleryView) -> ImageCallback
+	func imageGalleryView(galleryView: ImageGalleryView, imageCallBack callBack: ImageCallback, forImageAtIndex index: Int)
 	optional func imageGalleryView(galleryView: ImageGalleryView, didTapImageAtIndex index: Int)
 }
 
@@ -125,14 +135,20 @@ extension ImageGalleryView: UICollectionViewDataSource {
 	}
 
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		guard
-			let imageCallback = self.delegate?.imageGalleryView(self),
-			let cell = collectionView.dequeueReusableCellWithReuseIdentifier(self.cellIdentifier, forIndexPath: indexPath) as? ImageCollectionViewCell
-			else {
+		guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(self.cellIdentifier, forIndexPath: indexPath) as? ImageCollectionViewCell else {
 			return UICollectionViewCell()
 		}
 
-		cell.imageView.image = imageCallback(index: indexPath.row)
+		cell.imageView.image = nil
+		cell.activityIndicatorView.startAnimating()
+		cell.activityIndicatorView.hidden = false
+
+		let callback: ImageCallback = { image in
+			cell.activityIndicatorView.stopAnimating()
+			cell.imageView.image = image
+		}
+
+		self.delegate?.imageGalleryView(self, imageCallBack: callback, forImageAtIndex: indexPath.row)
 
 		return cell
 	}
@@ -159,6 +175,7 @@ extension ImageGalleryView: UICollectionViewDelegateFlowLayout {
 
 class ImageCollectionViewCell: UICollectionViewCell {
 	var imageView: UIImageView!
+	var activityIndicatorView: UIActivityIndicatorView!
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -175,14 +192,18 @@ class ImageCollectionViewCell: UICollectionViewCell {
 
 		self.imageView = UIImageView(frame: CGRectZero)
 		self.imageView.contentMode = imageContentMode
-
 		self.addSubview(self.imageView)
+
+		self.activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+		self.addSubview(self.activityIndicatorView)
 	}
 
 	override func layoutSubviews() {
 		super.layoutSubviews()
 
 		self.imageView.frame = self.bounds
+//		self.activityIndicatorView.frame = self.bounds
+		self.activityIndicatorView.center = self.imageView.center
 	}
 }
 

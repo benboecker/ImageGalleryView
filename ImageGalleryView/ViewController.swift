@@ -24,14 +24,10 @@ class ViewController: UIViewController, ImageGalleryDelegate {
 		return 4
 	}
 
-	func imageGalleryView(galleryView: ImageGalleryView) -> ImageCallback {
-		return image
+	func imageGalleryView(galleryView: ImageGalleryView, imageCallBack callBack: ImageCallback, forImageAtIndex index: Int) {
+		let image = UIImage(named: "test\(index)")!
+		callBack(image: image)
 	}
-
-	func image(index: Int) -> UIImage {
-		return UIImage(named: "test\(index)")!
-	}
-	
 
 	func imageGalleryView(galleryView: ImageGalleryView, didTapImageAtIndex index: Int) {
 		print("tapped image at index: \(index)")

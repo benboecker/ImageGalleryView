@@ -12,6 +12,13 @@ class AsynchronousViewController: UIViewController, ImageGalleryDelegate {
 
 	@IBOutlet weak var imageGalleryView: ImageGalleryView!
 
+	let imageURLs: [NSURL] = [NSURL(string: "https://placekitten.com/g/200/300")!,
+	                          NSURL(string: "https://placekitten.com/g/230/480")!,
+	                          NSURL(string: "https://placekitten.com/g/600/500")!,
+	                          NSURL(string: "https://placekitten.com/g/1000/1800")!,
+	                          NSURL(string: "https://placekitten.com/g/850/1300")!,
+	                          ]
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -19,15 +26,23 @@ class AsynchronousViewController: UIViewController, ImageGalleryDelegate {
 	}
 
 	func numberOfImages(inImageGalleryView galleryView: ImageGalleryView) -> Int {
-		return 4
+		return self.imageURLs.count
 	}
 
-	func imageGalleryView(galleryView: ImageGalleryView) -> ImageCallback {
-		return image
-	}
 
-	func image(index: Int) -> UIImage {
-		return UIImage(named: "test\(index)")!
+	func imageGalleryView(galleryView: ImageGalleryView, imageCallBack callBack: ImageCallback, forImageAtIndex index: Int) {
+		let url = self.imageURLs[index]
+
+		NSURLSession.sharedSession().dataTaskWithURL(url) { (data, _, error) in
+			dispatch_async(dispatch_get_main_queue()) {
+				guard let data = data else {
+					return
+				}
+
+				let image = UIImage(data: data)!
+				callBack(image: image)
+			}
+			}.resume()
 	}
 
 	func imageGalleryView(galleryView: ImageGalleryView, didTapImageAtIndex index: Int) {
