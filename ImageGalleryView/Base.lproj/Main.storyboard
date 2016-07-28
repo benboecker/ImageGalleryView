@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CHG-aE-NWf">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Storyboard-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="StoryboardViewController" customModule="ImageGalleryView" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Ce5-gh-mca" customClass="ImageGalleryView" customModule="ImageGalleryView" customModuleProvider="target">
+                                <rect key="frame" x="40" y="150" width="520" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="5Rv-GU-bem"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scale Aspect Fit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtx-hu-udb">
+                                <rect key="frame" x="40" y="458" width="117" height="19.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="dtx-hu-udb" firstAttribute="top" secondItem="Ce5-gh-mca" secondAttribute="bottom" constant="8" id="3LS-Ea-68J"/>
+                            <constraint firstItem="dtx-hu-udb" firstAttribute="leading" secondItem="Ce5-gh-mca" secondAttribute="leading" id="BcJ-DO-Nad"/>
+                            <constraint firstAttribute="trailing" secondItem="Ce5-gh-mca" secondAttribute="trailing" constant="40" id="Eod-mp-lDW"/>
+                            <constraint firstItem="Ce5-gh-mca" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="40" id="KHD-JB-uuB"/>
+                            <constraint firstItem="Ce5-gh-mca" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="sK1-x0-VOl"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Storyboard" id="23F-Vf-4Go"/>
+                    <connections>
+                        <outlet property="imageGalleryView" destination="Ce5-gh-mca" id="MpH-zY-l3n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1500" y="161"/>
+        </scene>
+        <!--Code-->
+        <scene sceneID="OOi-4K-5BZ">
+            <objects>
+                <viewController id="nW4-iU-oCN" customClass="ViewController" customModule="ImageGalleryView" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gzn-yC-kQW"/>
+                        <viewControllerLayoutGuide type="bottom" id="xO9-QS-lpe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pxM-mM-Wyc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Code" id="dbh-4T-aJP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mKU-aa-x7Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1500" y="846"/>
+        </scene>
+        <!--Asynchronous Loading-->
+        <scene sceneID="RU2-gh-t1C">
+            <objects>
+                <viewController id="eY7-Ph-qrL" customClass="AsynchronousViewController" customModule="ImageGalleryView" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cgl-Q1-w9u"/>
+                        <viewControllerLayoutGuide type="bottom" id="vtv-tR-4fl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pea-61-7pR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scale Aspect Fill" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiI-Pw-6fc">
+                                <rect key="frame" x="40" y="458" width="119" height="19.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAB-ci-X0R" customClass="ImageGalleryView" customModule="ImageGalleryView" customModuleProvider="target">
+                                <rect key="frame" x="40" y="150" width="520" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="WEM-0n-RfV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wiI-Pw-6fc" firstAttribute="leading" secondItem="oAB-ci-X0R" secondAttribute="leading" id="Gqk-qr-Mee"/>
+                            <constraint firstItem="wiI-Pw-6fc" firstAttribute="top" secondItem="oAB-ci-X0R" secondAttribute="bottom" constant="8" id="MiX-o5-3rE"/>
+                            <constraint firstItem="oAB-ci-X0R" firstAttribute="leading" secondItem="Pea-61-7pR" secondAttribute="leading" constant="40" id="ZKX-ju-vVC"/>
+                            <constraint firstAttribute="trailing" secondItem="oAB-ci-X0R" secondAttribute="trailing" constant="40" id="fsq-t0-d9m"/>
+                            <constraint firstItem="oAB-ci-X0R" firstAttribute="centerY" secondItem="Pea-61-7pR" secondAttribute="centerY" id="utU-8S-DSJ"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Asynchronous Loading" id="Lzr-Xo-9pR"/>
+                    <connections>
+                        <outlet property="imageGalleryView" destination="oAB-ci-X0R" id="hgq-Nb-ANS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mfL-JD-0ho" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1500" y="1630"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="UVv-3k-wvw">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="CHG-aE-NWf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="mUL-Fe-Lik">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="FTE-8S-Jq1"/>
+                        <segue destination="eY7-Ph-qrL" kind="relationship" relationship="viewControllers" id="CGE-SS-S3B"/>
+                        <segue destination="nW4-iU-oCN" kind="relationship" relationship="viewControllers" id="Jo1-wi-53Z"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fQt-I8-oM4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="584" y="846"/>
+        </scene>
+    </scenes>
+</document>
