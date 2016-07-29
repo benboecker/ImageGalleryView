@@ -30,7 +30,7 @@ class AsynchronousViewController: UIViewController, ImageGalleryDelegate {
 	}
 
 
-	func imageGalleryView(galleryView: ImageGalleryView, imageCallBack callBack: ImageCallback, forImageAtIndex index: Int) {
+	func imageGalleryView(galleryView: ImageGalleryView, imageCallback callback: ImageCallback, forImageAtIndex index: Int) {
 		let url = self.imageURLs[index]
 
 		NSURLSession.sharedSession().dataTaskWithURL(url) { (data, _, error) in
@@ -40,7 +40,7 @@ class AsynchronousViewController: UIViewController, ImageGalleryDelegate {
 				}
 
 				let image = UIImage(data: data)!
-				callBack(image: image)
+				callback(image: image)
 			}
 			}.resume()
 	}

@@ -38,7 +38,7 @@ The delegate protocol used for getting information about the content of the `Ima
 	- parameter callBack: The callback that **must be called by the delegate**. It takes the image that should be displayed at the given index as a parameter.
 	- parameter index: The index of the image to be displayed in the image gallery.
 	*/
-	func imageGalleryView(galleryView: ImageGalleryView, imageCallBack callBack: ImageCallback, forImageAtIndex index: Int)
+	func imageGalleryView(galleryView: ImageGalleryView, imageCallback callback: ImageCallback, forImageAtIndex index: Int)
 	/**
 	This method notifies the delegate, that an image was tapped in the `ImageGalleryView`.
 	
@@ -203,7 +203,7 @@ extension ImageGalleryView: UICollectionViewDataSource {
 			cell.imageView.image = image
 		}
 
-		self.delegate?.imageGalleryView(self, imageCallBack: callback, forImageAtIndex: indexPath.row)
+		self.delegate?.imageGalleryView(self, imageCallback: callback, forImageAtIndex: indexPath.row)
 
 		return cell
 	}
