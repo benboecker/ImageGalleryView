@@ -38,8 +38,11 @@ This method is responsible for telling the `ImageGalleryView` which images it sh
 This method notifies the delegate, that an image was tapped in the `ImageGalleryView`. It is an optional method that doesn't need to be implemented.
 
 ## Contact
-[apps@ben-boecker.de](mailto:apps@ben-boecker.de)
+
+[apps@ben-boecker.de](mailto:apps@ben-boecker.de)  
+
 [@BenBoecker](https://twitter.com/BenBoecker)
 
 ## License
+
 ImageGalleryView is available under the [MIT License](https://github.com/bennibrightside/ImageGalleryView/blob/master/LICENSE)
