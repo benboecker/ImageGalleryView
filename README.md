@@ -1,5 +1,7 @@
 # ImageGalleryView
 
+![Screenshot](https://github.com/bennibrightside/ImageGalleryView/blob/master/screenshot.jpg)
+
 ## Description
 
 A custom image gallery view for iOS written in Swift. It displays a range of images one at a time, swipable and with a page indicator at the bottom. The images are provided via delegate methods and can be loaded synchronously or asynchronously (via a webservice).
