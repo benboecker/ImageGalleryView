@@ -2,7 +2,7 @@
 
 ## Description
 
-A custom image gallery view for iOS written in Swift. It displays a range of images one at a time, swipable and with a page indicator at the bottom. The images are provided via delegate methods.
+A custom image gallery view for iOS written in Swift. It displays a range of images one at a time, swipable and with a page indicator at the bottom. The images are provided via delegate methods and can be loaded synchronously or asynchronously (via a webservice).
 
 ## Installation
 
@@ -10,16 +10,17 @@ Clone or download the repository and and manually add the file `ImageGalleryView
 
 ## Usage
 
-The gallery view can be used with storyboards or be created in code. 
+The gallery view can be used with storyboards or be created in code. Either way, the delegate must be set in code.
 
 ```
 let imageGalleryFrame = CGRect(x: 40, y: 40, width: 300, height: 200)
 let imageGalleryView = ImageGalleryView(frame: imageGalleryFrame)
-imageGalleryView.delegate = self
+imageGalleryView.delegate = self // Must be set for the control to work!
 self.view.addSubview(imageGalleryView)
 ```
 
-Either way, the delegate must be set.
+The images get displayed with the same content mode as the `ImageGalleryView`, the default is `.ScaleAspectFill`. This can also be set via interface builder or in code.
+
 
 ## ImageGalleryDelegate
 
@@ -31,7 +32,7 @@ This method returns the number of images shown in the `ImageGalleryView`. It is 
 
 `func imageGalleryView(galleryView: ImageGalleryView, imageCallback callback: ImageCallback, forImageAtIndex index: Int)`
 
-This method is responsible for telling the `ImageGalleryView` which images it should display. It does so by providing an `ImageCallback` that **must be called and passed the image by the delegate**. The delegate can determine which image to pass by looking t the passed index.
+This method is responsible for telling the `ImageGalleryView` which images it should display. It does so by providing an `ImageCallback` that **must be called and passed the image by the delegate**. The delegate can determine which image to pass by looking at the given index.
 
 `optional func imageGalleryView(galleryView: ImageGalleryView, didTapImageAtIndex index: Int)`
 
