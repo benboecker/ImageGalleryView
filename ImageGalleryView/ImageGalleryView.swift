@@ -170,6 +170,21 @@ extension ImageGalleryView {
 		let offset = CGPointMake(CGFloat(pageControl.currentPage) * self.bounds.width, 0.0)
 		self.collectionView?.setContentOffset(offset, animated: true)
 	}
+
+	/**
+	Scrolls the `ImageGalleryView` to the specified index if it is within the bounds. Otherwise nothing happens.
+
+	- Parameter atIndex: An `Int` value representing the index of the image to scroll to.
+	- Parameter animated: A `Bool` indicating whether the scroll should be animated.
+	*/
+	func scrollToImage(atIndex: Int, animated: Bool = true) {
+		guard atIndex < self.pageControl?.numberOfPages else {
+			return
+		}
+
+		let indexPath = NSIndexPath(forItem: atIndex, inSection: 0)
+		self.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: animated)
+	}
 }
 
 extension ImageGalleryView: UICollectionViewDataSource {
