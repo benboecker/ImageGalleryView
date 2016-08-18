@@ -185,6 +185,13 @@ extension ImageGalleryView {
 		let indexPath = NSIndexPath(forItem: atIndex, inSection: 0)
 		self.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: animated)
 	}
+
+	/**
+	Relaods the image data.
+	*/
+	func reloadData() {
+		self.collectionView?.reloadData()
+	}
 }
 
 extension ImageGalleryView: UICollectionViewDataSource {
